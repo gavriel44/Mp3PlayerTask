@@ -72,6 +72,27 @@ function formatNumber(num) {
   return ('0' + num).slice(-2)
 }
 
+function getSong(id) {
+  const requestedSong = player.songs.find(song => song.id === id);
+  if (requestedSong === undefined) throw new Error('so such song exists');
+  return requestedSong
+}
+
+function removeSongFromSongs(id) {
+  const songsArr = player.songs;
+  const songToRemove = getSong(id);
+  songsArr.splice(songsArr.indexOf(songToRemove), 1);
+}
+
+function removeSongFromPlaylists(id) {
+  let indexOfSong;
+  for (let playlist of player.playlists) {
+    if ((indexOfSong = playlist.songs.indexOf(id)) !== -1) {
+      playlist.songs.splice(indexOfSong, 1)
+    }
+  }
+}
+
 // end of help functions. ---------
 
 function playSong(id) {
@@ -80,7 +101,8 @@ function playSong(id) {
 }
 
 function removeSong(id) {
-  // your code here
+  removeSongFromSongs(id);
+  removeSongFromPlaylists(id);
 }
 
 function addSong(title, album, artist, duration, id) {
