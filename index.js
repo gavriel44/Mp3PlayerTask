@@ -47,13 +47,36 @@ const player = {
     { id: 1, name: 'Metal', songs: [1, 7, 4] },
     { id: 5, name: 'Israeli', songs: [4, 5] },
   ],
-  playSong(song) {
-    console.log(/* your code here */)
+  playSong({ title, album, artist, duration }) {
+    // receives a song object.
+    console.log(
+      `Playing ${title} from ${album} by ${artist} | ${convertSecToMin(
+        duration
+      )}.`
+    )
   },
 }
 
+// help functions! ---------
+
+function convertSecToMin(sec) {
+  // sec => mm:ss format.
+  const holeMin = Math.floor(sec / 60)
+  const secondsLeft = sec % 60
+  return formatNumber(holeMin) + ':' + formatNumber(secondsLeft)
+}
+
+function formatNumber(num) {
+  // to format from "6" => "06".
+  // note: only works until 99;
+  return ('0' + num).slice(-2)
+}
+
+// end of help functions. ---------
+
 function playSong(id) {
-  // your code here
+  // can also be:                    (song) => song.id === id
+  player.playSong(player.songs.find(({id:songId}) => songId === id))
 }
 
 function removeSong(id) {
