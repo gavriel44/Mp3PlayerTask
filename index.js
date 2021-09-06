@@ -143,6 +143,8 @@ function checkIfObjectIdTaken(id, getFunction) {
   }
 }
 
+const durationReducer = (totalDuration, songId) => totalDuration + getSong(songId).duration
+
 // end of help functions. ---------
 
 function playSong(id) {
@@ -208,7 +210,8 @@ function editPlaylist(playlistId, songId) {
 }
 
 function playlistDuration(id) {
-  // your code here
+  return getPlaylist(id).songs.reduce(durationReducer, 0)
+    
 }
 
 function searchByQuery(query) {
