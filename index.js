@@ -100,7 +100,6 @@ function removeSongFromSongs(id) {
   removeObjectFromArray(id, player.songs)
 }
 
-
 function removeObjectFromArray(objId, objectArr) {
   objectArr.splice(objectArr.indexOf(getObjectFromArray(objId, objectArr)), 1)
 }
@@ -137,16 +136,16 @@ function checkIfSongIdTaken(id) {
     Only if the error is because of "finding" the song
     then we continue and throw an Error.
     */
-    if (error.message === 'id already exist')
+    if (error.message === 'id already exist') {
       throw new Error('id already exist')
+    }
   }
 }
 
 // end of help functions. ---------
 
 function playSong(id) {
-  // can also be:                    (song) => song.id === id
-  player.playSong(player.songs.find(({ id: songId }) => songId === id))
+  player.playSong(getSong(id));
 }
 
 function removeSong(id) {
@@ -174,7 +173,7 @@ function addSong(
 }
 
 function removePlaylist(id) {
-  removeObjectFromArray(id, player.playlists);
+  removeObjectFromArray(id, player.playlists)
 }
 
 function createPlaylist(name, id) {
