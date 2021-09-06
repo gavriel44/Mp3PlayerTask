@@ -177,8 +177,14 @@ function removePlaylist(id) {
   removeObjectFromArray(id, player.playlists)
 }
 
-function createPlaylist(name, id) {
-  
+function createPlaylist(
+  name,
+  id = generateNewIdInArrayOfObjects(player.playlists)
+) {
+  checkIfObjectIdTaken(id, getPlaylist)
+
+  player.playlists.push({ id, name, songs: [] })
+  return id
 }
 
 function playPlaylist(id) {
