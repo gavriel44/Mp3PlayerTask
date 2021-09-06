@@ -67,8 +67,8 @@ function convertSecToMinFormat(sec) {
 }
 
 function convertMinFormatToSec(minFormat) {
-  const arr = minFormat.split(':').map(str => Number(str))
-  return 60 * arr[0] + arr[1];
+  const arr = minFormat.split(':').map((str) => Number(str))
+  return 60 * arr[0] + arr[1]
 }
 
 function formatNumber(num) {
@@ -77,22 +77,35 @@ function formatNumber(num) {
   return ('0' + num).slice(-2)
 }
 
+// ------------------
+
 function getSong(id) {
-  return getObjectFromArray(id, player.songs);
+  return getObjectFromArray(id, player.songs)
+}
+
+function getPlaylist(id) {
+  return getObjectFromArray(id, player.playlists)
 }
 
 function getObjectFromArray(objId, objectArr) {
   // throw Error if Object does not exists.
-  const requestedObject = objectArr.find(obj => obj.id === objId);
-  if (requestedObject === undefined) throw new Error('so such object exists');
+  const requestedObject = objectArr.find((obj) => obj.id === objId)
+  if (requestedObject === undefined) throw new Error('so such object exists')
   return requestedObject
 }
 
+// ------------------
+
 function removeSongFromSongs(id) {
-  const songsArr = player.songs
-  const songToRemove = getSong(id)
-  songsArr.splice(songsArr.indexOf(songToRemove), 1)
+  removeObjectFromArray(id, player.songs)
 }
+
+
+function removeObjectFromArray(objId, objectArr) {
+  objectArr.splice(objectArr.indexOf(getObjectFromArray(objId, objectArr)), 1)
+}
+
+// ------------------
 
 function removeSongFromPlaylists(id) {
   let indexOfSong
@@ -112,20 +125,20 @@ function generateNewIdInArrayOfObjects(objectArr) {
 }
 
 function getIdsArrayFromObjArray(objectArr) {
-  return objectArr.map(obj => obj.id);
+  return objectArr.map((obj) => obj.id)
 }
 
 function checkIfSongIdTaken(id) {
   try {
     getSong(id) // remember: getSong throws Error if no song was found.
     throw new Error('id already exist')
-  } 
-  catch(error) {
+  } catch (error) {
     /* 
     Only if the error is because of "finding" the song
     then we continue and throw an Error.
     */
-    if (error.message === 'id already exist') throw new Error('id already exist')
+    if (error.message === 'id already exist')
+      throw new Error('id already exist')
   }
 }
 
@@ -141,8 +154,14 @@ function removeSong(id) {
   removeSongFromPlaylists(id)
 }
 
-function addSong(title, album, artist, duration, id = generateNewIdInArrayOfObjects(player.songs)) {
-  checkIfSongIdTaken(id);
+function addSong(
+  title,
+  album,
+  artist,
+  duration,
+  id = generateNewIdInArrayOfObjects(player.songs)
+) {
+  checkIfSongIdTaken(id)
 
   player.songs.push({
     title,
@@ -151,11 +170,11 @@ function addSong(title, album, artist, duration, id = generateNewIdInArrayOfObje
     duration: convertMinFormatToSec(duration),
     id,
   })
-  return id;
+  return id
 }
 
 function removePlaylist(id) {
-  
+  removeObjectFromArray(id, player.playlists);
 }
 
 function createPlaylist(name, id) {
