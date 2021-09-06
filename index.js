@@ -127,9 +127,10 @@ function getIdsArrayFromObjArray(objectArr) {
   return objectArr.map((obj) => obj.id)
 }
 
-function checkIfSongIdTaken(id) {
+function checkIfObjectIdTaken(id, getFunction) {
+  // getFunction is a function expression. we will know where to search depending on the function
   try {
-    getSong(id) // remember: getSong throws Error if no song was found.
+    getFunction(id) // remember: getFunction can be: [getSong or getPlaylist] and throws Error if no song was found.
     throw new Error('id already exist')
   } catch (error) {
     /* 
@@ -145,7 +146,7 @@ function checkIfSongIdTaken(id) {
 // end of help functions. ---------
 
 function playSong(id) {
-  player.playSong(getSong(id));
+  player.playSong(getSong(id))
 }
 
 function removeSong(id) {
@@ -160,7 +161,7 @@ function addSong(
   duration,
   id = generateNewIdInArrayOfObjects(player.songs)
 ) {
-  checkIfSongIdTaken(id)
+  checkIfObjectIdTaken(id, getSong)
 
   player.songs.push({
     title,
@@ -177,7 +178,7 @@ function removePlaylist(id) {
 }
 
 function createPlaylist(name, id) {
-  // your code here
+  
 }
 
 function playPlaylist(id) {
