@@ -188,7 +188,7 @@ function createPlaylist(
 }
 
 function playPlaylist(id) {
-  // your code here
+  getPlaylist(id).songs.forEach(songId => playSong(songId))
 }
 
 function editPlaylist(playlistId, songId) {
