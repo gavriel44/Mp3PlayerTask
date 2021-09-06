@@ -78,10 +78,14 @@ function formatNumber(num) {
 }
 
 function getSong(id) {
-  // throw Error if song does not exists.
-  const requestedSong = player.songs.find((song) => song.id === id)
-  if (requestedSong === undefined) throw new Error('so such song exists')
-  return requestedSong
+  return getObjectFromArray(id, player.songs);
+}
+
+function getObjectFromArray(objId, objectArr) {
+  // throw Error if Object does not exists.
+  const requestedObject = objectArr.find(obj => obj.id === objId);
+  if (requestedObject === undefined) throw new Error('so such object exists');
+  return requestedObject
 }
 
 function removeSongFromSongs(id) {
@@ -151,7 +155,7 @@ function addSong(title, album, artist, duration, id = generateNewIdInArrayOfObje
 }
 
 function removePlaylist(id) {
-  // your code here
+  
 }
 
 function createPlaylist(name, id) {
