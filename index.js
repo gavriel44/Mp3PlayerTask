@@ -188,11 +188,23 @@ function createPlaylist(
 }
 
 function playPlaylist(id) {
-  getPlaylist(id).songs.forEach(songId => playSong(songId))
+  getPlaylist(id).songs.forEach((songId) => playSong(songId))
 }
 
 function editPlaylist(playlistId, songId) {
-  // your code here
+  // <getPlaylist and getSong> checks if such objects exist.
+  const SongsArr = getPlaylist(playlistId).songs
+  getSong(songId)
+
+  if (SongsArr.includes(songId)) {
+    if (SongsArr.length === 1) {
+      removePlaylist(playlistId)
+    } else {
+      SongsArr.splice(SongsArr.indexOf(songId), 1)
+    }
+  } else {
+    SongsArr.push(songId)
+  }
 }
 
 function playlistDuration(id) {
