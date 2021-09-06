@@ -49,11 +49,7 @@ const player = {
   ],
   playSong({ title, album, artist, duration }) {
     // receives a song object.
-    console.log(
-      `Playing ${title} from ${album} by ${artist} | ${convertSecToMinFormat(
-        duration
-      )}.`
-    )
+    console.log(`Playing ${title} from ${album} by ${artist} | ${convertSecToMinFormat(duration)}.`)
   },
 }
 
@@ -156,13 +152,7 @@ function removeSong(id) {
   removeSongFromPlaylists(id)
 }
 
-function addSong(
-  title,
-  album,
-  artist,
-  duration,
-  id = generateNewIdInArrayOfObjects(player.songs)
-) {
+function addSong(title, album, artist, duration, id = generateNewIdInArrayOfObjects(player.songs)) {
   checkIfObjectIdTaken(id, getSong)
 
   player.songs.push({
@@ -179,10 +169,7 @@ function removePlaylist(id) {
   removeObjectFromArray(id, player.playlists)
 }
 
-function createPlaylist(
-  name,
-  id = generateNewIdInArrayOfObjects(player.playlists)
-) {
+function createPlaylist(name, id = generateNewIdInArrayOfObjects(player.playlists)) {
   checkIfObjectIdTaken(id, getPlaylist)
 
   player.playlists.push({ id, name, songs: [] })
@@ -211,7 +198,6 @@ function editPlaylist(playlistId, songId) {
 
 function playlistDuration(id) {
   return getPlaylist(id).songs.reduce(durationReducer, 0)
-    
 }
 
 function searchByQuery(query) {
