@@ -1,5 +1,3 @@
-const { FUNCTION_TYPES } = require("@babel/types")
-
 const player = {
   songs: [
     {
@@ -178,6 +176,29 @@ function compareFunction(byProperty) {
   }
 }
 
+function getClosestSong(duration) {
+  let closestSong = player.songs[0]
+  for (let song of player.songs) {
+    if (Math.abs(closestSong.duration - duration) >= Math.abs(song.duration - duration)) {
+      closestSong = song
+    }
+  }
+  return closestSong
+}
+
+function getClosestPlaylist(duration) {
+  let closestPlaylist = player.playlists[0]
+  for (let playlist of player.playlists) {
+    if (
+      Math.abs(playlistDuration(closestPlaylist.id) - duration) >=
+      Math.abs(playlistDuration(playlist.id) - duration)
+    ) {
+      closestPlaylist = playlist
+    }
+  }
+  return closestPlaylist
+}
+
 // end of help functions. ---------
 
 function playSong(id) {
@@ -243,7 +264,18 @@ function searchByQuery(query) {
 }
 
 function searchByDuration(duration) {
-  // your code here
+  duration = convertMinFormatToSec(duration)
+
+  const closestSong = getClosestSong(duration)
+  const closestPlaylist = getClosestPlaylist(duration)
+
+  if (
+    Math.abs(closestSong.duration - duration) >=
+    Math.abs(playlistDuration(closestPlaylist.id) - duration)
+  ) {
+    return closestPlaylist
+  }
+  return closestSong
 }
 
 module.exports = {
