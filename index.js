@@ -1,3 +1,5 @@
+const { FUNCTION_TYPES } = require("@babel/types")
+
 const player = {
   songs: [
     {
@@ -141,6 +143,41 @@ function checkIfObjectIdTaken(id, getFunction) {
 
 const durationReducer = (totalDuration, songId) => totalDuration + getSong(songId).duration
 
+function searchByQueryInSongs(query) {
+  return searchByQueryInArr(query, player.songs).sort(compareFunction('title'))
+}
+
+function searchByQueryInPlaylist(query) {
+  return searchByQueryInArr(query, player.playlists).sort(compareFunction('name'))
+}
+
+function searchByQueryInArr(query, arr) {
+  let matchArr = []
+  for (let obj of arr) {
+    for (let property of Object.values(obj)) {
+      if (('' + property).toLowerCase().includes(query)) {
+        matchArr.push(obj)
+        break
+      }
+    }
+  }
+  return matchArr
+}
+
+function compareFunction(byProperty) {
+  // returns a compareFunction based on what to sort by, e.g "title" or "name".
+  // remember: we are sorting objects.
+  return (a, b) => {
+    if (a[byProperty] < b[byProperty]) {
+      return -1
+    }
+    if (a[byProperty] > b[byProperty]) {
+      return 1
+    }
+    return 0
+  }
+}
+
 // end of help functions. ---------
 
 function playSong(id) {
@@ -201,7 +238,8 @@ function playlistDuration(id) {
 }
 
 function searchByQuery(query) {
-  // your code here
+  query = query.toLowerCase()
+  return { songs: searchByQueryInSongs(query), playlists: searchByQueryInPlaylist(query) }
 }
 
 function searchByDuration(duration) {
