@@ -280,6 +280,53 @@ function searchByDuration(duration) {
   return closestSong
 }
 
+function addSongToDisplay(song) {
+  const {id, title, album, artist, duration} = song
+  let div = document.createElement("DIV");
+  let h2 = document.createElement("H2");
+  let ul = document.createElement("UL");
+  let li1 = document.createElement("LI")
+  let li2 = document.createElement("LI")
+  let li3 = document.createElement("LI")
+  let li4 = document.createElement("LI")
+
+  li1.appendChild(document.createTextNode("Id: " + id))
+  li2.appendChild(document.createTextNode("Album: " + album))
+  li3.appendChild(document.createTextNode("Artist: " + artist))
+  li4.appendChild(document.createTextNode("Duration: " + convertSecToMinFormat(duration)))
+
+
+
+  h2.appendChild(document.createTextNode(`Song title: ${title}`))
+  ul.appendChild(li1)
+  ul.appendChild(li2)
+  ul.appendChild(li3)
+  ul.appendChild(li4)
+  div.appendChild(h2)
+  div.appendChild(ul)
+  document.getElementById("song_section").appendChild(div)
+}
+
+function clearSection(sectionId) {
+  const sectionToClear = document.getElementById(sectionId)
+  sectionToClear.innerHTML = ''
+}
+
+for (let song of player.songs) {
+  addSongToDisplay(song)
+}
+
+
+
+
+// const element = document.getElementById("p1");
+// element.innerHTML = getSong(2).title;
+
+// let node = document.createElement("DIV");                 // Create a <li> node
+// let textNode = document.createTextNode("Water");         // Create a text node
+// node.appendChild(textNode);                              // Append the text to <li>
+// document.getElementById("main").appendChild(node);
+
 module.exports = {
   player,
   playSong,
