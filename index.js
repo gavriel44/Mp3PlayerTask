@@ -69,7 +69,7 @@ function convertMinFormatToSec(minFormat) {
 
 function formatNumber(num) {
   // to format from "6" => "06".
-  // note: only works until 99;
+  // note: only works up to 99.
   return ('0' + num).slice(-2)
 }
 
@@ -84,13 +84,11 @@ function getPlaylist(id) {
 }
 
 function getObjectFromArray(objId, objectArr) {
-  // throw Error if Object does not exists.
+  // throws Error if Object does not exists.
   const requestedObject = objectArr.find((obj) => obj.id === objId)
   if (requestedObject === undefined) throw new Error('so such object exists')
   return requestedObject
 }
-
-// ------------------
 
 function removeSongFromSongs(id) {
   removeObjectFromArray(id, player.songs)
@@ -100,11 +98,10 @@ function removeObjectFromArray(objId, objectArr) {
   objectArr.splice(objectArr.indexOf(getObjectFromArray(objId, objectArr)), 1)
 }
 
-// ------------------
-
 function removeSongFromPlaylists(id) {
   let indexOfSong
   for (let playlist of player.playlists) {
+    // Remember: .indexOf(element) returns -1 if the element is not present in the array.
     if ((indexOfSong = playlist.songs.indexOf(id)) !== -1) {
       playlist.songs.splice(indexOfSong, 1)
     }
@@ -163,7 +160,7 @@ function searchByQueryInArr(query, arr) {
 }
 
 function compareFunction(byProperty) {
-  // returns a compareFunction based on what to sort by, e.g "title" or "name".
+  // returns a compareFunction based on what property to sort by, e.g "title" or "name".
   // remember: we are sorting objects.
   return (a, b) => {
     if (a[byProperty] < b[byProperty]) {
@@ -177,6 +174,8 @@ function compareFunction(byProperty) {
 }
 
 function getClosestSong(duration) {
+  /* In this function we compare the distance between the given
+  duration and the songs duration. every time, we keep the closest song */
   let closestSong = player.songs[0]
   for (let song of player.songs) {
     if (Math.abs(closestSong.duration - duration) >= Math.abs(song.duration - duration)) {
@@ -187,6 +186,8 @@ function getClosestSong(duration) {
 }
 
 function getClosestPlaylist(duration) {
+  /* Same as in getClosestSong but this time, to get the playlist
+  duration, we use the function playlistDuration */
   let closestPlaylist = player.playlists[0]
   for (let playlist of player.playlists) {
     if (
@@ -255,6 +256,7 @@ function editPlaylist(playlistId, songId) {
 }
 
 function playlistDuration(id) {
+  // durationReducer - a function to reduce with, look in help functions.
   return getPlaylist(id).songs.reduce(durationReducer, 0)
 }
 
