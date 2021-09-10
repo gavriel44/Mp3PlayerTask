@@ -1,0 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+body {
+    background-color: rgb(243, 222, 255);
+    font-family: 'Ubuntu', sans-serif;
+}
+
+header {
+    margin: auto;
+    width: 30%;
+}
+
+h1 {
+    text-decoration: underline;
+}
+
+
+div {
+    display: inline-block;
+    margin: 20px 5px;
+    width: 30%;
+    border: 0.5em solid black;
+    border-radius: 5%;
+    background-color: rgb(244, 255, 197);
+}
+
+main {
+    margin: auto;
+    width: 65%;
+}
+
+#song_section {
+    margin: auto;
+    pa
+}

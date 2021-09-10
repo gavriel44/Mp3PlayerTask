@@ -286,7 +286,9 @@ function searchByDuration(duration) {
   return closestSong
 }
 
-function addSongToDisplay(song) {
+// End of normal Requirements --------
+
+function addSongToNode(song) {
   const { id, title, album, artist, duration } = song
   let div = document.createElement('DIV')
   let h2 = document.createElement('H2')
@@ -296,19 +298,16 @@ function addSongToDisplay(song) {
   let li3 = document.createElement('LI')
   let li4 = document.createElement('LI')
 
-  li1.appendChild(document.createTextNode('Id: ' + id))
-  li2.appendChild(document.createTextNode('Album: ' + album))
-  li3.appendChild(document.createTextNode('Artist: ' + artist))
-  li4.appendChild(document.createTextNode('Duration: ' + convertSecToMinFormat(duration)))
+  li1.append(document.createTextNode('Id: ' + id))
+  li2.append(document.createTextNode('Album: ' + album))
+  li3.append(document.createTextNode('Artist: ' + artist))
+  li4.append(document.createTextNode('Duration: ' + convertSecToMinFormat(duration)))
 
-  h2.appendChild(document.createTextNode(`Song title: ${title}`))
-  ul.appendChild(li1)
-  ul.appendChild(li2)
-  ul.appendChild(li3)
-  ul.appendChild(li4)
-  div.appendChild(h2)
-  div.appendChild(ul)
-  document.getElementById('song_section').appendChild(div)
+  h2.append(document.createTextNode(`Title: ${title}`))
+  ul.append(li1, li2, li3, li4)
+  
+  div.append(h2, ul)
+  document.getElementById('song_section').append(div)
 }
 
 function clearSection(sectionId) {
@@ -317,10 +316,18 @@ function clearSection(sectionId) {
 }
 
 function displayAllSongs() {
+  clearSection('song_section')
   for (let song of player.songs) {
-    addSongToDisplay(song)
+    addSongToNode(song)
   }
 }
+
+function addSongAndDisplay() {
+  clearSection('song_section')
+  addSong({id:document.getElementById('id').value, title: document.getElementById('title').value, album: document.getElementById('album').value, artist: document.getElementById('artist').value, duration: document.getElementById('duration').value})
+  displayAllSongs()
+}
+displayAllSongs()
 
 module.exports = {
   player,
