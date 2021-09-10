@@ -297,11 +297,19 @@ function addSongToNode(song) {
   let li2 = document.createElement('LI')
   let li3 = document.createElement('LI')
   let li4 = document.createElement('LI')
-  let button = document.createElement('button')
+  let playButton = document.createElement('button')
+  let infoButton = document.createElement('button')
 
-  button.onclick = () => {playSong(id); alert(`Playing ${title} from ${album} by ${artist} | ${convertSecToMinFormat(duration)}.`)}
-  button.innerHTML = "Play me"
-  button.className = "play-song-button"
+  playButton.onclick = () => {
+    playSong(id)
+    alert(`Playing ${title} from ${album} by ${artist} | ${convertSecToMinFormat(duration)}.`)
+  }
+  playButton.innerHTML = 'Play me'
+  playButton.className = 'play-song-button'
+
+  infoButton.onclick = () => getInfoFromApi(song).then(data => alert(data))
+  infoButton.innerHTML = 'Info'
+  infoButton.className = 'play-song-button'
 
   li1.append(document.createTextNode('Id: ' + id))
   li2.append(document.createTextNode('Album: ' + album))
@@ -311,8 +319,8 @@ function addSongToNode(song) {
   h2.append(document.createTextNode(`Title: ${title}`))
   ul.append(li1, li2, li3, li4)
 
-  div.append(h2, ul, button)
-  div.className = "song-div"
+  div.append(h2, ul, playButton, infoButton)
+  div.className = 'song-div'
   document.getElementById('song_section').append(div)
 }
 
@@ -329,7 +337,7 @@ function displayAllSongs() {
 
 function addSongAndDisplay() {
   clearSection('song_section')
-  try{
+  try {
     addSong(getSongFromInputElem())
   } catch (error) {
     alert(error.message)
@@ -348,12 +356,29 @@ function getSongFromInputElem() {
     throw new Error('more information')
   }
   if (!id) {
-    return { title, album, artist, duration } 
-  } else{
+    return { title, album, artist, duration }
+  } else {
     return { id, title, album, artist, duration }
   }
-  }
-  
+}
+
+function getInfoFromApi(song) {
+  /* this function is used to get information from
+  lost.fm api. for more information on how to work with
+  the api go to: "https://www.last.fm/api/show/artist.getInfo" */
+
+  return fetch(
+    'https://ws.audioscrobbler.com/2.0/?' +
+      new URLSearchParams({
+        method: 'artist.getinfo',
+        artist: song.artist,
+        api_key: '4d3aa563118a0aed9edfae55f7c189d2',
+        format: 'json',
+      })
+  )
+    .then((resp) => resp.json())
+    .then((data) => data.artist.bio.summary.slice(0, data.artist.bio.summary.indexOf('<a')))
+}
 
 displayAllSongs()
 
