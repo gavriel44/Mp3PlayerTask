@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./styles.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="./styles.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Welcome to Gavriels MP3 player</h1>
+      <h1>Welcome to Gavriels MP3 player</h1>
     </header>
 
     <main id="main">
-        <section id="song_section">
+      <section id="song_section"></section>
 
-        </section>
+      <section id="control_section" class="form">
+          
+        <form id="add_song_form">
+            <h1 style="color: aliceblue;">Add a song:</h1>
+          <div class="input-container">
+            <label for="id" class="placeholder">id:</label>
+            <input class="input" type="text" name="id" id="id" />
+          </div>
+          <div class="input-container">
+            <label for="title" class="placeholder">title:</label>
+            <input class="input" type="text" name="title" id="title" />
+          </div>
+          <div class="input-container">
+            <label for="album" class="placeholder">album: </label>
+            <input class="input" type="text" name="album" id="album" />
+          </div>
+          <div class="input-container">
+            <label for="artist" class="placeholder">artist: </label>
+            <input class="input" type="text" name="artist" id="artist" />
+          </div>
+          <div class="input-container">
+            <label for="duration" class="placeholder">duration: </label>
+            <input class="input" type="text" name="duration" id="duration" />
+          </div>
 
-        <section id="control_section">
-            <form id="add_song_form">
-                id: <input type="text" name="id" id="id"><br>
-                title: <input type="text" name="title" id="title"><br>
-                album: <input type="text" name="album" id="album"><br>
-                artist: <input type="text" name="artist" id="artist"><br>
-                duration: <input type="text" name="duration" id="duration"><br>
-                <input type="button" onclick="addSongAndDisplay()" value="Submit">
-              </form>
-        </section>
-        
+          <input class="add-button" type="button" onclick="addSongAndDisplay()" value="Add song"/>
+        </form>
+      </section>
     </main>
 
-    <footer>
-
-    </footer>
+    <footer></footer>
 
     <script src="./index.js"></script>
-</body>
+  </body>
 </html>

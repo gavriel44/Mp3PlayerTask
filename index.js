@@ -305,8 +305,9 @@ function addSongToNode(song) {
 
   h2.append(document.createTextNode(`Title: ${title}`))
   ul.append(li1, li2, li3, li4)
-  
+
   div.append(h2, ul)
+  div.className = "song-div"
   document.getElementById('song_section').append(div)
 }
 
@@ -324,9 +325,26 @@ function displayAllSongs() {
 
 function addSongAndDisplay() {
   clearSection('song_section')
-  addSong({id:document.getElementById('id').value, title: document.getElementById('title').value, album: document.getElementById('album').value, artist: document.getElementById('artist').value, duration: document.getElementById('duration').value})
+  try{
+    addSong(getSongFromInputElem())
+  } catch {
+    alert("Try a different Id :(")
+  }
   displayAllSongs()
 }
+
+function getSongFromInputElem() {
+  const id = parseInt(document.getElementById('id').value)
+  const title = document.getElementById('title').value
+  const album = document.getElementById('album').value
+  const artist = document.getElementById('artist').value
+  const duration = document.getElementById('duration').value
+  if (!id) {
+    return { title, album, artist, duration }
+  }
+  return { id, title, album, artist, duration }
+}
+
 displayAllSongs()
 
 module.exports = {
