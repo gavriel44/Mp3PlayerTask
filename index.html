@@ -21,26 +21,26 @@
             <h1 style="color: aliceblue;">Add a song:</h1>
           <div class="input-container">
             <label for="id" class="placeholder">id:</label>
-            <input class="input" type="text" name="id" id="id" />
+            <input class="input" type="text" name="id" id="id" required/>
           </div>
           <div class="input-container">
             <label for="title" class="placeholder">title:</label>
-            <input class="input" type="text" name="title" id="title" />
+            <input class="input" type="text" name="title" id="title" required/>
           </div>
           <div class="input-container">
             <label for="album" class="placeholder">album: </label>
-            <input class="input" type="text" name="album" id="album" />
+            <input class="input" type="text" name="album" id="album" required/>
           </div>
           <div class="input-container">
             <label for="artist" class="placeholder">artist: </label>
-            <input class="input" type="text" name="artist" id="artist" />
+            <input class="input" type="text" name="artist" id="artist" required/>
           </div>
           <div class="input-container">
             <label for="duration" class="placeholder">duration: </label>
-            <input class="input" type="text" name="duration" id="duration" />
+            <input class="input" type="text" name="duration" id="duration" required/>
           </div>
 
-          <input class="add-button" type="button" onclick="addSongAndDisplay()" value="Add song"/>
+          <button class="add-button" type="button" onclick="addSongAndDisplay()" value="Add song">Add song</button>
         </form>
       </section>
     </main>

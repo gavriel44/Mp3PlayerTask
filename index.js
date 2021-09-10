@@ -297,6 +297,11 @@ function addSongToNode(song) {
   let li2 = document.createElement('LI')
   let li3 = document.createElement('LI')
   let li4 = document.createElement('LI')
+  let button = document.createElement('button')
+
+  button.onclick = () => {playSong(id); alert(`Playing ${title} from ${album} by ${artist} | ${convertSecToMinFormat(duration)}.`)}
+  button.innerHTML = "Play me"
+  button.className = "play-song-button"
 
   li1.append(document.createTextNode('Id: ' + id))
   li2.append(document.createTextNode('Album: ' + album))
@@ -306,7 +311,7 @@ function addSongToNode(song) {
   h2.append(document.createTextNode(`Title: ${title}`))
   ul.append(li1, li2, li3, li4)
 
-  div.append(h2, ul)
+  div.append(h2, ul, button)
   div.className = "song-div"
   document.getElementById('song_section').append(div)
 }
@@ -317,7 +322,6 @@ function clearSection(sectionId) {
 }
 
 function displayAllSongs() {
-  clearSection('song_section')
   for (let song of player.songs) {
     addSongToNode(song)
   }
@@ -327,8 +331,8 @@ function addSongAndDisplay() {
   clearSection('song_section')
   try{
     addSong(getSongFromInputElem())
-  } catch {
-    alert("Try a different Id :(")
+  } catch (error) {
+    alert(error.message)
   }
   displayAllSongs()
 }
@@ -339,11 +343,17 @@ function getSongFromInputElem() {
   const album = document.getElementById('album').value
   const artist = document.getElementById('artist').value
   const duration = document.getElementById('duration').value
-  if (!id) {
-    return { title, album, artist, duration }
+
+  if (!title || !album || !artist || !duration) {
+    throw new Error('more information')
   }
-  return { id, title, album, artist, duration }
-}
+  if (!id) {
+    return { title, album, artist, duration } 
+  } else{
+    return { id, title, album, artist, duration }
+  }
+  }
+  
 
 displayAllSongs()
 
