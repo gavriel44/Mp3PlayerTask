@@ -113,7 +113,9 @@ function generateNewIdInArrayOfObjects(objectArr) {
   i.e the returning id does not exists in the
   array and is unique.
   */
-  return Math.max(...getIdsArrayFromObjArray(objectArr)) + 1
+  const idArray = getIdsArrayFromObjArray(objectArr)
+  if (idArray.length === 0) return 1
+  return Math.max(...idArray) + 1
 }
 
 function getIdsArrayFromObjArray(objectArr) {
