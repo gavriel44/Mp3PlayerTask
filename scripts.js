@@ -1,4 +1,5 @@
 function addSongToNode(song) {
+    // adds a song div to the main_section element
     const { id, title, album, artist, duration } = song
     let div = document.createElement('DIV')
     let h2 = document.createElement('H2')
@@ -12,7 +13,8 @@ function addSongToNode(song) {
     let deleteButton = document.createElement('button')
   
     div.id = '' + song.id
-  
+
+    // buttons:
     playButton.onclick = () => {
       playSong(id)
       alert(`Playing ${title} from ${album} by ${artist} | ${convertSecToMinFormat(duration)}.`)
@@ -27,7 +29,8 @@ function addSongToNode(song) {
     deleteButton.onclick = () => removeSongFromDisplay(id)
     deleteButton.innerHTML = 'delete'
     deleteButton.className = 'delete-button'
-  
+    
+    // details:
     li1.append(document.createTextNode('Id: ' + id))
     li2.append(document.createTextNode('Album: ' + album))
     li3.append(document.createTextNode('Artist: ' + artist))
@@ -36,8 +39,10 @@ function addSongToNode(song) {
     h2.append(document.createTextNode(`Title: ${title}`))
     ul.append(li1, li2, li3, li4)
   
+    // the final append in to the song div
     div.append(h2, ul, playButton, infoButton, deleteButton)
     div.className = 'song-div'
+    // inserting the div into the section element
     document.getElementById('song_section').append(div)
   }
   
@@ -68,7 +73,8 @@ function addSongToNode(song) {
     const album = document.getElementById('album').value
     const artist = document.getElementById('artist').value
     const duration = document.getElementById('duration').value
-  
+    
+    // here we need to handle different or bad inputs
     if (!title || !album || !artist || !duration) {
       throw new Error('more information')
     }
