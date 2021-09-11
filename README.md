@@ -29,6 +29,8 @@ use the web app interface and visualize what is happening while adding or removi
 And last but not least: In the interface feel free to press the INFO button, this will use
 the lost.fm api to fetch information on <strong>every</strong> artist you can think off!!! try me ;)
 
+<strong>U can try my project right now, got to github-pages:</strong> [https://gavriel44.github.io/Mp3PlayerTask/](https://gavriel44.github.io/Mp3PlayerTask/)
+
 ### Important Files You Should Notice
 
 - index.js - the main Requirements for the project
