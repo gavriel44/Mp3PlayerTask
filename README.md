@@ -1,91 +1,72 @@
-# MP3 Player - Second Weekend Assignment
-You are going to implement an MP3 player.
+# Welcome to gavries Mp3 player!
 
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-## Instructions
-1. Fork this repo into your account.
-2. Clone the forked repo to your computer.
-3. Execute `npm install` in the project folder to install the [tests](#testing).
-4. Create a new git branch for your work.
-5. Complete the project [requirements](#requirements).
-6. Remember to push your commits regularly to GitHub.
-7. Submit your work (explanation [below](#submission))
-8. Good luck & have fun!
+<!-- ABOUT THE PROJECT -->
 
+## About The Project
 
-## Requirements
-The player itself is an object that has:
-- `songs`: an array of songs
-- `playlists`: an array of playlists
-- `playSong`: a method that plays a song.
-It receives a song object and should print the following format `"Playing {song.title} from {song.album} by {song.artist} | {song.duration}."` (replace the stuff inside the `{}` with the real values).
-The song duration should be in `mm:ss` format (for example 02:40).
+![project main front](./readMeImages/project_front.jpg?raw=true 'project_front')
 
-A song object has:
-- `id`: a unique ID (a number)
-- `title`: a title
-- `album`: album title
-- `artist`: artist name
-- `duration`: duration (number, in seconds)
+This is my solution for the MP3 Player - Second Weekend Assignment.
 
-A playlist object has:
-- `id`: a unique ID (a number)
-- `name`: a name
-- `songs`: an array of song IDs
+In this project I implement a MP3 player that can perform different tasks
+and will help you menage your music. In addition to managing your music you can also
+use the web app interface and visualize what is happening while adding or removing songs.
 
-You are asked to implement the following functions:
-- `playSong` - Gets a song ID. Uses `player.playSong` to play the song with the given ID.
-- `removeSong` - Gets a song ID. Removes the song with the given ID from the player (from songs and playlists).
-- `addSong` - Gets a title, album, artist, duration & ID. Adds a new song with given properties to the player. The ID is optional, and if omitted should be automatically generated. The song duration should be in `mm:ss` format (for example 06:27). Returns the ID of the new song.
-- `removePlaylist` - Gets a playlist ID. Remove the playlist with the given ID from the player (does not delete the songs inside it).
-- `createPlaylist` - Gets a name & ID. Creates a new, empty playlist with the given details. The ID is optional, and if omitted should be automatically generated. Returns the ID of the new playlist.
-- `playPlaylist` - Gets a playlist ID. Plays all songs in the specified playlist, in the order the appear in the playlist.
-- `editPlaylist` - Gets a playlist ID & a song ID. If the song ID exists in the playlist, removes it. If it was the only song in the playlist, also deletes the playlist. If the song ID does not exist in the playlist, adds it to the end of the playlist.
-- `playlistDuration` - Gets a playlist ID. Returns the total duration of the entire playlist with the given ID.
-- `searchByQuery` - Gets a query string. Returns a results object, which has:
-  - `songs`: an array of songs in which either title or album or artist contain the query string. The songs should be sorted by their titles.
-  - `playlists`: an array of playlists in which the name contains the query string. The playlists should be sorted by their names.
-  
-  The comparison in both cases should be case-insensitive.
-- `searchByDuration` - Gets a duration in `mm:ss` format (for example 11:03). Returns the song, or playlist, with the closest duration to what was given.
+And last but not least: In the interface feel free to press the INFO button, this will use
+the lost.fm api to fetch information on <strong>every</strong> artist you can think off!!! try me ;)
 
+<strong>U can try my project right now, got to github-pages:</strong> [https://gavriel44.github.io/Mp3PlayerTask/](https://gavriel44.github.io/Mp3PlayerTask/)
 
-## Testing
-We have added some automated tests for you to use. They will help you make sure your code covers the requirements.
+### Important Files You Should Notice
 
-To run the tests, execute `npm run test` in the project folder.
+- index.js - the main Requirements for the project
 
-__Note__: These tests might not cover everything. Don't just count on them. You should remain responsible and vigilant for other possible edge-cases.
+- scripts.js - the personal js code <strong>I</strong> added for index.html
+- index.html - the template for the web page i.e the user interface for the player
+- styles.css - the css for index.html
 
+<!-- GETTING STARTED -->
 
-## Grading
-Your work will be graded based on the following considerations:
-- The number of automatic tests you pass
-- Readable and ordered code
-  - Spacing & indentation
-  - Indicative vairable/function names
-  - Comments (where necessary)
-- Proper use of Git
-  - Granular commits
-  - Descriptive commit messages
-- Extra features you might have added
+## Getting Started
 
+To get a local copy up and running follow these simple steps.
 
-## Submission
-1. On GitHub, open a pull request from your branch to the main branch.
-2. __Do not merge the pull request!__
-3. Add the user `Cyber4sPopo` as collaborator to your repo.
-4. Submit a link to the pull request in Google Classroom.
+- clone the project
+- `npm install` in the cmd
+- open the index.html file in the browser. <strong>I recommend using Live server for that</strong>
 
+![Live server](readMeImages/Live_server.JPG?raw=true 'Live_server')
 
-## Important Tip
-Try to work in small iterations. You've got a big and complex task ahead of you. Break it down into smaller tasks. Concentrate on making small progress every time. Do it step by step.
+## API
 
+In this project i use the lost.fm API. It is a free resource.
 
-## Remarks
-- The player object must be stored in a global variable called `player`.
-- The function, method & property names should be __exactly__ as described above (for the tests to function).
-- __Avoid code duplication!__ You are free to add as many extra functions as you like.
-- Pay attention to edge-cases! Your code should throw errors when the user tries to do something invalid (delete a song that doesn't exist, etc.).
-- You can use all the material you've learned so far, including extras you've learned on your own.
-- Write your code in the `index.js` file. It contains a template which you can use as the basis for your code.
+detailes for using the api in this project:
+
+- Application name gavriMp3Player
+- API key 4d3aa563118a0aed9edfae55f7c189d2
+- Registered to zazox44
+
+For more information on how to use it go to: [https://www.last.fm/api#getting-started](https://www.last.fm/api#getting-started)
+
+<!-- CONTACT -->
+
+## Contact
+
+Gavriel Frant - gavril44@gmail.com
+
+Project Link: [https://github.com/gavriel44/Mp3PlayerTask/tree/gavri-working-personal-addons](https://github.com/gavriel44/Mp3PlayerTask/tree/gavri-working-personal-addons)

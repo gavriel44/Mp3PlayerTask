@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./styles.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gavriels Mp3 player</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Gavriels MP3 player</h1>
+    </header>
+
+    <main id="main">
+      <section id="song_section"></section>
+
+      <section id="control_section" class="form">
+        <form id="add_song_form">
+          <h1 style="color: aliceblue">Add a song:</h1>
+          <div class="input-container">
+            <label for="id" class="placeholder">id:</label>
+            <input class="input" type="text" name="id" id="id" required />
+          </div>
+          <div class="input-container">
+            <label for="title" class="placeholder">title:</label>
+            <input class="input" type="text" name="title" id="title" required />
+          </div>
+          <div class="input-container">
+            <label for="album" class="placeholder">album: </label>
+            <input class="input" type="text" name="album" id="album" required />
+          </div>
+          <div class="input-container">
+            <label for="artist" class="placeholder">artist: </label>
+            <input class="input" type="text" name="artist" id="artist" required />
+          </div>
+          <div class="input-container">
+            <label for="duration" class="placeholder">duration: </label>
+            <input class="input" type="text" name="duration" id="duration" required />
+          </div>
+
+          <button class="add-button" type="button" onclick="addSongAndDisplay()" value="Add song">
+            Add song
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <script src="./index.js"></script>
+    <script src="./scripts.js"></script>
+  </body>
+</html>
