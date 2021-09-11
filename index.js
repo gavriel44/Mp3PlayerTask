@@ -300,6 +300,8 @@ function addSongToNode(song) {
   let playButton = document.createElement('button')
   let infoButton = document.createElement('button')
 
+  div.id = '' + song.id
+
   playButton.onclick = () => {
     playSong(id)
     alert(`Playing ${title} from ${album} by ${artist} | ${convertSecToMinFormat(duration)}.`)
@@ -362,22 +364,35 @@ function getSongFromInputElem() {
   }
 }
 
-function getInfoFromApi(song) {
+function removeSongFromDisplay(songId) {
+  let songDiv = document.getElementById('' + songId)
+  songDiv.remove()
+  removeSong(songId)
+}
+
+async function getInfoFromApi(song) {
   /* this function is used to get information from
   lost.fm api. for more information on how to work with
   the api go to: "https://www.last.fm/api/show/artist.getInfo" */
 
-  return fetch(
+  /* 
+  Application name	gavriMp3Player
+  API key	4d3aa563118a0aed9edfae55f7c189d2
+  Shared secret	bd5f041c79bd40112a4d9f8a8544578c
+  Registered to	zazox44
+  */
+
+  const resp = await fetch(
     'https://ws.audioscrobbler.com/2.0/?' +
-      new URLSearchParams({
-        method: 'artist.getinfo',
-        artist: song.artist,
-        api_key: '4d3aa563118a0aed9edfae55f7c189d2',
-        format: 'json',
-      })
+    new URLSearchParams({
+      method: 'artist.getinfo',
+      artist: song.artist,
+      api_key: '4d3aa563118a0aed9edfae55f7c189d2',
+      format: 'json',
+    })
   )
-    .then((resp) => resp.json())
-    .then((data) => data.artist.bio.summary.slice(0, data.artist.bio.summary.indexOf('<a')))
+  const data = await resp.json()
+  return data.artist.bio.summary.slice(0, data.artist.bio.summary.indexOf('<a'))
 }
 
 displayAllSongs()
