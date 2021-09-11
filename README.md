@@ -50,6 +50,18 @@ To get a local copy up and running follow these simple steps.
 ![Live server](readMeImages/Live_server.JPG?raw=true "Live_server")
 
 
+## API
+
+In this project i use the lost.fm API. It is a free resource.
+
+detailes for using the api in this project:
+
+* Application name	gavriMp3Player
+* API key	4d3aa563118a0aed9edfae55f7c189d2
+* Registered to	zazox44
+
+For more information on how to use it go to: [https://www.last.fm/api#getting-started](https://www.last.fm/api#getting-started)
+
 
 <!-- CONTACT -->
 ## Contact
