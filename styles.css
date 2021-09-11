@@ -1,105 +1,124 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 body {
-    background-color: rgb(243, 222, 255);
-    font-family: 'Ubuntu', sans-serif;
+  background-color: rgb(243, 222, 255);
+  font-family: 'Ubuntu', sans-serif;
 }
 
 header {
-    text-align: center;
-    vertical-align: middle;
-    line-height: 90px;  
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
 }
 
 h1 {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-
 .song-div {
-    display: inline-block;
-    margin: 20px 5px;
-    width: 30%;
-    border: 0.5em solid black;
-    border-radius: 20px;
-    background-color: rgb(244, 255, 197);
+  display: inline-block;
+  margin: 20px 5px;
+  width: 30%;
+  border: 0.5em solid black;
+  border-radius: 20px;
+  background-color: rgb(244, 255, 197);
+}
+
+.song-div:hover {
+  background-color: seashell;
 }
 
 main {
-    margin: auto;
-    width: 65%;
+  margin: auto;
+  width: 65%;
 }
 
 #song_section {
-    margin: auto;
+  margin: auto;
 }
 
 form {
-    background-color: #15172b;
-    border-radius: 20px;
-    box-sizing: border-box;
-    padding: 20px;
-    width: 50%;
-    margin: auto;
-  }
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 50%;
+  margin: auto;
+}
 
 .input-container {
-    width: 80%;
-    margin: auto;
-  }
+  width: 80%;
+  margin: auto;
+}
 
 .input {
-    background-color: #303245;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    font-size: 18px;
-    height: 100%;
-    outline: 0;
-    padding: 4px 20px 0;
-    width: 100%;
-    margin: 20px;
-  }
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+  margin: 20px;
+}
 
-  .placeholder {
-    color: #ffffff;
-    
-  }
-  
-  .add-button {
-    background-color: #08d;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    cursor: pointer;
-    font-size: 18px;
-    height: 50px;
-    margin-top: 38px;
-    
-    text-align: center;
-    width: 100%;
-  }
+.placeholder {
+  color: #ffffff;
+}
 
-  .add-button:active {
-    background-color: #06b;
-  }
+.add-button {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
 
-  .play-song-button {
-    background-color: #08d;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    cursor: pointer;
-    font-size: 18px;
-    height: 50px;
-    margin: 15px 30px;
-    
-    text-align: center;
-    width: 80%;
-  }
+  text-align: center;
+  width: 100%;
+}
 
+.add-button:active {
+  background-color: #06b;
+}
 
+.play-song-button:active {
+  background-color: #06b;
+}
+
+.play-song-button {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin: 15px 30px;
+
+  text-align: center;
+  width: 80%;
+}
+
+.delete-button {
+  position: relative;
+  left: 260px;
+  bottom: 305px;
+  background-color: rgb(255, 138, 118);
+  border-radius: 8px;
+  border: 0;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.delete-button:active {
+  background-color: rgb(177, 66, 47);
+}

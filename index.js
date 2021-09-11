@@ -299,6 +299,7 @@ function addSongToNode(song) {
   let li4 = document.createElement('LI')
   let playButton = document.createElement('button')
   let infoButton = document.createElement('button')
+  let deleteButton = document.createElement('button')
 
   div.id = '' + song.id
 
@@ -313,6 +314,10 @@ function addSongToNode(song) {
   infoButton.innerHTML = 'Info'
   infoButton.className = 'play-song-button'
 
+  deleteButton.onclick = () => removeSongFromDisplay(id)
+  deleteButton.innerHTML = 'delete'
+  deleteButton.className = 'delete-button'
+
   li1.append(document.createTextNode('Id: ' + id))
   li2.append(document.createTextNode('Album: ' + album))
   li3.append(document.createTextNode('Artist: ' + artist))
@@ -321,7 +326,7 @@ function addSongToNode(song) {
   h2.append(document.createTextNode(`Title: ${title}`))
   ul.append(li1, li2, li3, li4)
 
-  div.append(h2, ul, playButton, infoButton)
+  div.append(h2, ul, playButton, infoButton, deleteButton)
   div.className = 'song-div'
   document.getElementById('song_section').append(div)
 }
