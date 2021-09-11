@@ -1,4 +1,4 @@
-## welcome to gavries Mp3 player!
+# Welcome to gavries Mp3 player!
 
 
 
@@ -8,30 +8,18 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![project main front](readMeImages\project_front.jpg?raw=true "project_front")
+![project main front](./readMeImages/project_front.jpg?raw=true "project_front")
 
 This is my solution for the MP3 Player - Second Weekend Assignment.
 
@@ -46,20 +34,20 @@ the lost.fm api to fetch information on <strong>every</strong> artist you can th
 
 * index.js - the main Requirements for the project
 
-* scripts.js - the personal js code <strong>I</strong> added
+* scripts.js - the personal js code <strong>I</strong> added for index.html
 * index.html - the template for the web page i.e the user interface for the player
 * styles.css - the css for index.html
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
 * clone the project
 * ```npm install``` in the cmd
 * open the index.html file in the browser. <strong>I recommend using Live server for that</strong>
 
-![project main front](readMeImages\Live_server.jpg?raw=true "project_front")
+![Live server](readMeImages/Live_server.JPG?raw=true "Live_server")
 
 
 
