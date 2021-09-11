@@ -213,16 +213,13 @@ function removeSong(id) {
   removeSongFromPlaylists(id)
 }
 
-function addSong(title,album,artist,duration,id = generateNewIdInArrayOfObjects(player.songs)) {
-  
+function addSong(title, album, artist, duration, id = generateNewIdInArrayOfObjects(player.songs)) {
   checkIfObjectIdTaken(id, getSong)
-  console.log('test');
-  console.log(duration);
   player.songs.push({
     title,
     album,
     artist,
-    duration:convertMinFormatToSec(duration),
+    duration: convertMinFormatToSec(duration),
     id,
   })
   return id
@@ -285,8 +282,6 @@ function searchByDuration(duration) {
 }
 
 // End of normal Requirements --------
-
-
 
 module.exports = {
   player,
